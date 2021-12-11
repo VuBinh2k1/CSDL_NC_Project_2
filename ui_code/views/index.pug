@@ -1,0 +1,134 @@
+head
+  link(href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' rel='stylesheet')
+  script(src='https://kit.fontawesome.com/ac7a4b981f.js' crossorigin='anonymous')
+header.tracking-wide.bg-white
+  nav.flex.justify-between.mt-4
+    .text-xl
+      a.ml-16.mr-4(href='#' class='hover:text-blue-800')
+        i.fas.fa-bars
+      a(href='#' class='hover:text-blue-800')
+        i.fas.fa-search
+    image(src="logo-hoa-yeu-thuong.png").text-2xl.font-semibold.italic
+    .text-xl
+      a(href='#' class='hover:text-blue-800')
+        i.fas.fa-user
+      a.mr-16.ml-4(href='#' class='hover:text-blue-800')
+        i.fas.fa-shopping-cart
+    // end of left nav
+.flex.justify-center.mt-4.text-sm
+  a.mx-3(href='#' class='hover:text-blue-700') TRANG CHỦ
+  a(href='#' class='hover:text-blue-700') HOA SINH NHẬT
+  a.mx-3(href='#' class='hover:text-blue-700') CHỦ ĐỀ
+  a(href='#' class='hover:text-blue-700') HOA TƯƠI
+  a.mx-3(href='#' class='hover:text-blue-700') MÀU SẮC
+  a(href='#' class='hover:text-blue-700') HOA ĐẶC BIỆT
+  a.mx-3(href='#' class='hover:text-blue-700') QUÀ TẶNG KÈM
+  a(href='#' class='hover:text-blue-700') HOA CƯỚI
+  a.mx-3(href='#' class='hover:text-blue-700') Ý NGHĨA HOA
+.mt-12.flex.justify-between.mb-8
+  h2.text-2xl.mx-16.font-semibold
+  .mx-16
+    span.mr-4 6 items
+    select#dropdown.py-6
+      option.bg-white.p-8(disabled='' selected='' value='') Sort by
+      option Product Type
+      option Bestsellers
+      option Lowest Price
+      option Highest Price
+      option Bestsellers
+.grid.mx-16.gap-8(class='lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2')
+  .flex.flex-col.bg-gray-100
+    img(src='h1.png' alt='Boy Brow')
+    .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+      a.text-lg.font-medium(href='#') Boy Brow
+      a.font-light(href='#' class='default:text-gray-900') grooming pomade
+    button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+      span.mx-4.text-sm Add to Cart
+      span.mx-4.text-sm $16
+  .flex.flex-col.bg-gray-100
+    img(src='h2.jpg' alt='Cloud Paint')
+    .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+      a.text-lg.font-medium(href='#') Cloud Paint
+      a.font-light(href='#' class='default:text-gray-900') seamless cheek color
+    button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+      span.mx-4.text-sm Add to Cart
+      span.mx-4.text-sm $18
+  .flex.flex-col.bg-gray-100
+    img(src='h3.jpg' alt='Generation G')
+    .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+      a.text-lg.font-medium(href='#') Generation G
+      a.font-light(href='#' class='default:text-gray-900') sheer matte lipstick
+    button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+      span.mx-4.text-sm Add to Cart
+      span.mx-4.text-sm $18
+  .flex.flex-col.bg-gray-100
+    img(src='h4.png' alt='Lip Gloss')
+    .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+      a.text-lg.font-medium(href='#') Lip Gloss
+      a.font-light(href='#' class='default:text-gray-900') cushiony glassy shine
+    button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+      span.mx-4.text-sm Add to Cart
+      span.mx-4.text-sm $14
+  .flex.flex-col.bg-gray-100
+    img(src='h5.jpg' alt='Brow Flick')
+    .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+      a.text-lg.font-medium(href='#') Brow Flick
+      a.font-light(href='#' class='default:text-gray-900') microfine detailing pen
+    button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+      span.mx-4.text-sm Add to Cart
+      span.mx-4.text-sm $18
+  .flex.flex-col.bg-gray-100
+    img(src='h6.png' alt='Lash Slick')
+    .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+      a.text-lg.font-medium(href='#') Lash Slick
+      a.font-light(href='#' class='default:text-gray-900') film form mascara
+    button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+      span.mx-4.text-sm Add to Cart
+      span.mx-4.text-sm $16
+  .flex.flex-col.bg-gray-100
+    img(src='h6.png' alt='Lash Slick')
+    .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+      a.text-lg.font-medium(href='#') Lash Slick
+      a.font-light(href='#' class='default:text-gray-900') film form mascara
+    button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+      span.mx-4.text-sm Add to Cart
+      span.mx-4.text-sm $16
+  .flex.flex-col.bg-gray-100
+    img(src='h6.png' alt='Lash Slick')
+    .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+      a.text-lg.font-medium(href='#') Lash Slick
+      a.font-light(href='#' class='default:text-gray-900') film form mascara
+    button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+      span.mx-4.text-sm Add to Cart
+      span.mx-4.text-sm $16
+footer.bg-black.mt-16.pb-24.pt-12.tracking-wide
+  .inline-flex.bg-black.ml-16.mb-20
+    img.self-center.rounded-full.block.w-24.h-24(src='https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fwp-content%2Fblogs.dir%2F6%2Ffiles%2F2018%2F08%2Fglossier-chicago-pop-up-interior-makeup-skincare-4.jpg?q=75&w=1000&cbr=1&fit=max' alt='Glossier Store')
+    .flex.flex-col.ml-8.self-center
+      span.text-white.text-2xl More about our stores
+      .space-x-4.text-sm.underline.text-white
+        a.transition.duration-500(href='#' class='hover:text-gray-600') New York
+        a.transition.duration-500(href='#' class='hover:text-gray-600') Los Angeles
+        a.transition.duration-500(href='#' class='hover:text-gray-600') All stores &amp; popups
+  .flex.justify-around
+    .max-w-xl
+      p.text-white We also make emails.
+      p.text-white.font-light
+        | Receive email updates on stuff you&rsquo;ll probably want to know about, including products, launches, and events. Unsubscribe anytime.
+      input.mt-4.bg-black.border.border-solid.border-gray-100.rounded-md.w-full.p-2(type='email' placeholder='Your Email')
+    .uppercase.flex.flex-row.space-x-24
+      .flex.flex-col.text-xs.space-y-4
+        span.text-gray-600 About Glossier
+        a.transition.duration-500.text-white(href='#' class='hover:text-gray-600 hover:underline') About us
+        a.transition.duration-500.text-white(href='#' class='hover:text-gray-600 hover:underline') Careers
+        a.transition.duration-500.text-white(href='#' class='hover:text-gray-600 hover:underline') Company blog
+      .flex.flex-col.text-xs.space-y-4
+        span.text-gray-600 Help
+        a.transition.duration-500.text-white(href='#' class='hover:text-gray-600 hover:underline') Contact
+        a.transition.duration-500.text-white(href='#' class='hover:text-gray-600 hover:underline') Redeem gift card
+        a.transition.duration-500.text-white(href='#' class='hover:text-gray-600 hover:underline') Returns &amp; exchanges
+        a.transition.duration-500.text-white(href='#' class='hover:text-gray-600 hover:underline') Help &amp; FAQ
+      .flex.flex-col.text-xs.space-y-4
+        span.text-gray-600 More
+        a.transition.duration-500.text-white(href='#' class='hover:text-gray-600 hover:underline') Into the gloss
+        a.transition.duration-500.text-white(href='#' class='hover:text-gray-600 hover:underline') Free stuff
