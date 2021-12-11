@@ -46,8 +46,8 @@ GO
 /* Groupe: Sanpham, nguyenlieu                                  */
 /*==============================================================*/
 CREATE TABLE [dbo].[DS_PHANLOAI](
-	MaSo		INT					NOT NULL	IDENTITY(1,1),
-	Loai		VARCHAR(20)			NOT NULL,
+	MaSo			INT					NOT NULL	IDENTITY(1,1),
+	Loai			VARCHAR(20)			NOT NULL,
 	UNIQUE (MaSo, Loai),
 	CONSTRAINT PK_PHANLOAI PRIMARY KEY(MaSo)
 );
@@ -182,7 +182,7 @@ CREATE TABLE [dbo].[VOUCHER](
 	MaVoucher		CHAR(10)		NOT NULL,	--manual
 	GiaTri			DECIMAL(3, 2)	NOT NULL,
 	HanSuDung		DATE,
-	SoDanSuDung		INT				DEFAULT(1),
+	SoLanSuDung		INT				DEFAULT(1),
 	CONSTRAINT PK_VOUCHER PRIMARY KEY(MaVoucher)
 );
 
