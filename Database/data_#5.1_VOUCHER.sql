@@ -1,0 +1,25 @@
+USE [HOAYEUTHUONG]
+GO
+
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110034', 0.5, '2021-12-20', 3)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110035', 0.5, '2021-12-20', 3)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110036', 0.5, '2021-12-20', 1)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110037', 0.5, '2021-12-20', 1)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110038', 0.5, '2021-12-20', 1)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110039', 0.5, '2021-12-20', 2)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110040', 0.5, '2021-12-20', 2)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110041', 0.5, '2021-12-20', 1)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110042', 0.5, '2021-12-20', 1)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110043', 0.5, '2021-12-20', 3)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110044', 0.5, '2021-12-20', 1)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110045', 0.5, '2021-12-20', 1)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110046', 0.5, '2021-12-20', 2)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110047', 0.5, '2021-12-20', 2)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110048', 0.5, '2021-12-20', 3)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110049', 0.5, '2021-12-20', 1)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V20110050', 0.5, '2021-12-20', 2)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V8T3000K5', 0.8, '2021-12-20', 1)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V8T3000G5', 0.8, '2021-08-04', 1)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('V8T3000J7', 0.8, '2021-08-04', 1)
+INSERT INTO [dbo].[VOUCHER](MaVoucher, GiaTri, HanSuDung, SoLanSuDung) VALUES ('NEWMEMBER', 0.35, '2021-12-20', 1)
+GO
