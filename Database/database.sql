@@ -289,7 +289,89 @@ GO
 /*==============================================================*/
 /* Trigger                                                      */
 /*==============================================================*/
-CREATE OR ALTER TRIGGER [dbo].[ChuDe_TenSP]
+CREATE OR ALTER TRIGGER [dbo].[TRIGGER_Insert_SANPHAM]
+ON [dbo].[SANPHAM]
+INSTEAD OF INSERT
+AS
+BEGIN
+	DECLARE @Loop CURSOR
+	DECLARE 
+		@MaSP			INT,
+		@Loai			VARCHAR(20),
+		@TenSP			NVARCHAR(50),
+		@NgaySangTao	DATE,
+		@DonGiaSP		DECIMAL(19,4),
+		@GiamGiaSP		DECIMAL(19,4),
+		@ThongTinSP		NVARCHAR(255),
+		@TinhTrangSP	NVARCHAR(50)
+
+	SET @Loop = CURSOR FOR
+	SELECT *
+	FROM inserted 
+
+	OPEN @Loop
+	FETCH NEXT FROM @Loop INTO @MaSP, @Loai, @TenSP, @NgaySangTao, @DonGiaSP, @GiamGiaSP, @ThongTinSP, @TinhTrangSP
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		INSERT INTO [dbo].[DS_PHANLOAI](Loai)
+		VALUES (@Loai);
+
+		SET @MaSP = SCOPE_IDENTITY()
+
+		INSERT INTO [dbo].[SANPHAM](MaSP, Loai, TenSP, NgaySangTao, DonGiaSP, GiamGiaSP, ThongTinSP, TinhTrangSP)
+		VALUES (@MaSP, @Loai, @TenSP, @NgaySangTao, @DonGiaSP, @GiamGiaSP, @ThongTinSP, @TinhTrangSP);
+	
+		FETCH NEXT FROM @Loop
+		INTO @MaSP, @Loai, @TenSP, @NgaySangTao, @DonGiaSP, @GiamGiaSP, @ThongTinSP, @TinhTrangSP
+	END;
+	CLOSE @Loop
+END
+GO
+ALTER TABLE [dbo].[SANPHAM] ENABLE TRIGGER [TRIGGER_Insert_SANPHAM]
+GO
+
+CREATE OR ALTER TRIGGER [dbo].[TRIGGER_Insert_NGUYENLIEU]
+ON [dbo].[NGUYENLIEU]
+INSTEAD OF INSERT
+AS
+BEGIN
+	DECLARE @Loop CURSOR
+	DECLARE 
+		@MaNL			INT,
+		@Loai			VARCHAR(20),
+		@TenNL			NVARCHAR(50),
+		@YNghia			NVARCHAR(MAX),
+		@DonViTinh		NVARCHAR(10),
+		@DonGiaNL		DECIMAL(19,4),
+		@SoLuongKHO		INT,
+		@SoLuongToiThieu INT
+
+	SET @Loop = CURSOR FOR
+	SELECT *
+	FROM inserted 
+
+	OPEN @Loop
+	FETCH NEXT FROM @Loop INTO @MaNL, @Loai, @TenNL, @YNghia, @DonViTinh, @DonGiaNL, @SoLuongKHO, @SoLuongToiThieu
+	WHILE @@FETCH_STATUS = 0
+	BEGIN
+		INSERT INTO [dbo].[DS_PHANLOAI](Loai)
+		VALUES (@Loai);
+
+		SET @MaNL = SCOPE_IDENTITY()
+
+		INSERT INTO [dbo].[NGUYENLIEU](MaNL, Loai, TenNL, YNghia, DonViTinh, DonGiaNL, SoLuongKHO, SoLuongToiThieu)
+		VALUES (@MaNL, @Loai, @TenNL, @YNghia, @DonViTinh, @DonGiaNL, @SoLuongKHO, @SoLuongToiThieu);
+	
+		FETCH NEXT FROM @Loop
+		INTO @MaNL, @Loai, @TenNL, @YNghia, @DonViTinh, @DonGiaNL, @SoLuongKHO, @SoLuongToiThieu
+	END;
+	CLOSE @Loop
+END
+GO
+ALTER TABLE [dbo].[NGUYENLIEU] ENABLE TRIGGER [TRIGGER_Insert_NGUYENLIEU]
+GO
+
+CREATE OR ALTER TRIGGER [dbo].[TRIGGER_ChuDe_TenSP]
 ON [dbo].[SANPHAM_CHUDE]
 INSTEAD OF  INSERT
 AS
@@ -301,7 +383,7 @@ BEGIN
 	FROM inserted i
 END
 GO
-ALTER TABLE [dbo].[SANPHAM_CHUDE] ENABLE TRIGGER ChuDe_TenSP
+ALTER TABLE [dbo].[SANPHAM_CHUDE] ENABLE TRIGGER [TRIGGER_ChuDe_TenSP]
 GO
 
 
