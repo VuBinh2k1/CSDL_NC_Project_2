@@ -2,15 +2,13 @@ extends layout
 block content
   .mt-12.flex.justify-between.mb-8
     h2.text-2xl.mx-16.font-semibold
+    <div class="flex items-center justify-center ">
+        <div class="flex border-2 border-gray-200 rounded">
+            <input type="text" class="px-4 py-2 w-80" placeholder="Search...">
+            <button class="px-4 text-white bg-gray-600 border-l "> Search </button>
+        </div>
+    </div>
     .mx-16
-      span.mr-4 6 items
-      select#dropdown.py-6
-        option.bg-white.p-8(disabled='' selected='' value='') Sort by
-        option Product Type
-        option Bestsellers
-        option Lowest Price
-        option Highest Price
-        option Bestsellers
   .grid.mx-16.gap-8(class='lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2')
     .flex.flex-col.bg-gray-100
       img(src='h1.png' alt='Boy Brow')

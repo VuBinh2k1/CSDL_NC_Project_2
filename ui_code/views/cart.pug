@@ -1,0 +1,55 @@
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(href='https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' rel='stylesheet')
+  title CartPage
+  style.
+    #summary {
+        background-color: #f6f6f6;
+    }
+.container.mx-auto.mt-10
+  .flex.shadow-md.my-10
+    .bg-white.px-10.py-10(class='w-3/4')
+      .flex.justify-between.border-b.pb-8
+        h1.font-semibold.text-2xl Shopping Cart
+        h2.font-semibold.text-2xl Items
+      .flex.mt-10.mb-5
+        h3.font-semibold.text-gray-600.text-xs.uppercase(class='w-2/5') Product Details
+        h3.font-semibold.text-center.text-gray-600.text-xs.uppercase.text-center(class='w-1/5') Quantity
+        h3.font-semibold.text-center.text-gray-600.text-xs.uppercase.text-center(class='w-1/5') Price
+        h3.font-semibold.text-center.text-gray-600.text-xs.uppercase.text-center(class='w-1/5') Total
+      .flex.items-center.-mx-8.px-6.py-5(class='hover:bg-gray-100')
+        .flex(class='w-2/5')
+          // product
+          .w-20
+            img.h-24(src='h1.png' alt='')
+          .flex.flex-col.justify-between.ml-4.flex-grow
+            span.font-bold.text-sm RED APPLES 2
+            span.text-red-500.text-xs 12050
+            a.font-semibold.text-gray-500.text-xs(href='#' class='hover:text-red-500') Remove
+        .flex.justify-center(class='w-1/5')
+          input.mx-2.border.text-center.w-8(type='text' value='1')
+        span.text-center.font-semibold.text-sm(class='w-1/5') 455000 VND
+        span.text-center.font-semibold.text-sm(class='w-1/5') 455000 VND
+      a.flex.font-semibold.text-indigo-600.text-sm.mt-10(href='/')
+        svg.fill-current.mr-2.text-indigo-600.w-4(viewbox='0 0 448 512')
+          path(d='M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z')
+        |           Back to Shop
+    #summary.px-8.py-10(class='w-1/4')
+      h1.font-semibold.text-2xl.border-b.pb-8 Order Summary
+      .flex.justify-between.mt-10.mb-5
+        span.font-semibold.text-sm.uppercase Items 3
+        span.font-semibold.text-sm 590$
+      div
+        label.font-medium.inline-block.mb-3.text-sm.uppercase Shipping
+        select.block.p-2.text-gray-600.w-full.text-sm
+          option Standard shipping - $10.00
+      .py-10
+        label.font-semibold.inline-block.mb-3.text-sm.uppercase(for='promo') Promo Code
+        input#promo.p-2.text-sm.w-full(type='text' placeholder='Enter your code')
+      button.bg-red-500.px-5.py-2.text-sm.text-white.uppercase(class='hover:bg-red-600') Apply
+      .border-t.mt-8
+        .flex.font-semibold.justify-between.py-6.text-sm.uppercase
+          span Total cost
+          span $600
+        button.bg-indigo-500.font-semibold.py-3.text-sm.text-white.uppercase.w-full(class='hover:bg-indigo-600') Checkout
