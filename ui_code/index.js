@@ -48,6 +48,14 @@ app.get('/admin', (req, res) => {
   res.render('admin');
 });
 
+app.get('/manager', (req, res) => {
+  res.render('manager');
+});
+
+app.get('/staff', (req, res) => {
+  res.render('staff');
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
