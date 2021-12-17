@@ -14,7 +14,7 @@ BEGIN
 	FROM HOADON 
 	WHERE MAHD = @MAHD
 END
-
+GO
 EXEC KTRA_HD 1
 GO
 --Nhân viên kiểm tra thông tin chấm công

@@ -11,7 +11,7 @@ BEGIN
 		RETURN
 	END
 	UPDATE VOUCHER
-	SET GiaTri = @GTRI, HanSuDung - @HSD, SoLanSuDung = @SL
+	SET GiaTri = @GTRI, HanSuDung = @HSD, SoLanSuDung = @SL
 	WHERE MaVoucher = @MAVC
 END
 GO

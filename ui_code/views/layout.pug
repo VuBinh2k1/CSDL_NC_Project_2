@@ -4,11 +4,8 @@ head
 header.tracking-wide.bg-white
   nav.flex.justify-between.mt-4
     .text-xl
-      a.ml-16.mr-4(href='#' class='hover:text-blue-800')
-        i.fas.fa-bars
-      a(href='#' class='hover:text-blue-800')
-        i.fas.fa-search
-    image(src="logo-hoa-yeu-thuong.png").text-2xl.font-semibold.italic
+    a(href="/")
+      image(src="logo-hoa-yeu-thuong.png").text-2xl.font-semibold.italic
     .text-xl
       a(href='/admin' class='hover:text-blue-800')
         i.fas.fa-user
@@ -16,15 +13,17 @@ header.tracking-wide.bg-white
         i.fas.fa-shopping-cart
     // end of left nav
 .flex.justify-center.mt-4.text-sm
-  a.mx-3(href='#' class='hover:text-blue-700') TRANG CHỦ
-  a(href='#' class='hover:text-blue-700') HOA SINH NHẬT
-  a.mx-3(href='#' class='hover:text-blue-700') CHỦ ĐỀ
-  a(href='#' class='hover:text-blue-700') HOA TƯƠI
-  a.mx-3(href='#' class='hover:text-blue-700') MÀU SẮC
-  a(href='#' class='hover:text-blue-700') HOA ĐẶC BIỆT
-  a.mx-3(href='#' class='hover:text-blue-700') QUÀ TẶNG KÈM
-  a(href='#' class='hover:text-blue-700') HOA CƯỚI
-  a.mx-3(href='#' class='hover:text-blue-700') Ý NGHĨA HOA
+  a.mx-3(href='/chude?query=Bó_hoa_tươi' class='hover:text-blue-700') BÓ HOA TƯƠI
+  a(href='/chude?query=Gấu_bông' class='hover:text-blue-700') GẤU BÔNG
+  a.mx-3(href='/chude?query=Hộp_hoa_tươi' class='hover:text-blue-700') HỘP HOA TƯƠI
+  a(href='/chude?query=Hoa_tươi' class='hover:text-blue-700') HOA TƯƠI
+  a.mx-3(href='/chude?query=Bình_hoa_tươi' class='hover:text-blue-700') BÌNH HOA TƯƠI
+  a(href='/chude?query=Hoa_chúc_mừng' class='hover:text-blue-700') HOA CHÚC MỪNG
+  a.mx-3(href='/chude?query=Hoa_tình_yêu' class='hover:text-blue-700') HOA TÌNH YÊU
+  a(href='/chude?query=Hoa_sinh_nhật' class='hover:text-blue-700') HOA SINH NHẬT
+  a.mx-3(href='/chude?query=Hoa_chia_buồn' class='hover:text-blue-700') HOA CHIA BUỒN
+  a(href='/chude?query=Hoa_ngày_lễ' class='hover:text-blue-700') HOA NGÀY LỄ
+  a.mx-3(href='/chude?query=Bánh' class='hover:text-blue-700') BÁNH
 block content
 footer.bg-black.mt-16.pb-24.pt-12.tracking-wide
     .inline-flex.bg-black.ml-16.mb-20

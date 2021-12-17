@@ -3,74 +3,98 @@ block content
   .mt-12.flex.justify-between.mb-8
     h2.text-2xl.mx-16.font-semibold
     <div class="flex items-center justify-center ">
+    form(action="/" method="POST")
         <div class="flex border-2 border-gray-200 rounded">
-            <input type="text" class="px-4 py-2 w-80" placeholder="Search...">
-            <button class="px-4 text-white bg-gray-600 border-l "> Search </button>
+            <input type="text" name="search" class="px-4 py-2 w-80" placeholder="MÃ SẢN PHẨM...">
+            <button type="submit" class="px-4 text-white bg-gray-600 border-l "> Search </button>
         </div>
     </div>
     .mx-16
-  .grid.mx-16.gap-8(class='lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2')
-    .flex.flex-col.bg-gray-100
-      img(src='h1.png' alt='Boy Brow')
-      .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
-        a.text-lg.font-medium(href='#') Boy Brow
-        a.font-light(href='#' class='default:text-gray-900') grooming pomade
-      button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
-        span.mx-4.text-sm Add to Cart
-        span.mx-4.text-sm $16
-    .flex.flex-col.bg-gray-100
-      img(src='h2.jpg' alt='Cloud Paint')
-      .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
-        a.text-lg.font-medium(href='#') Cloud Paint
-        a.font-light(href='#' class='default:text-gray-900') seamless cheek color
-      button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
-        span.mx-4.text-sm Add to Cart
-        span.mx-4.text-sm $18
-    .flex.flex-col.bg-gray-100
-      img(src='h3.jpg' alt='Generation G')
-      .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
-        a.text-lg.font-medium(href='#') Generation G
-        a.font-light(href='#' class='default:text-gray-900') sheer matte lipstick
-      button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
-        span.mx-4.text-sm Add to Cart
-        span.mx-4.text-sm $18
-    .flex.flex-col.bg-gray-100
-      img(src='h4.png' alt='Lip Gloss')
-      .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
-        a.text-lg.font-medium(href='#') Lip Gloss
-        a.font-light(href='#' class='default:text-gray-900') cushiony glassy shine
-      button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
-        span.mx-4.text-sm Add to Cart
-        span.mx-4.text-sm $14
-    .flex.flex-col.bg-gray-100
-      img(src='h5.jpg' alt='Brow Flick')
-      .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
-        a.text-lg.font-medium(href='#') Brow Flick
-        a.font-light(href='#' class='default:text-gray-900') microfine detailing pen
-      button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
-        span.mx-4.text-sm Add to Cart
-        span.mx-4.text-sm $18
-    .flex.flex-col.bg-gray-100
-      img(src='h6.png' alt='Lash Slick')
-      .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
-        a.text-lg.font-medium(href='#') Lash Slick
-        a.font-light(href='#' class='default:text-gray-900') film form mascara
-      button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
-        span.mx-4.text-sm Add to Cart
-        span.mx-4.text-sm $16
-    .flex.flex-col.bg-gray-100
-      img(src='h6.png' alt='Lash Slick')
-      .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
-        a.text-lg.font-medium(href='#') Lash Slick
-        a.font-light(href='#' class='default:text-gray-900') film form mascara
-      button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
-        span.mx-4.text-sm Add to Cart
-        span.mx-4.text-sm $16
-    .flex.flex-col.bg-gray-100
-      img(src='h6.png' alt='Lash Slick')
-      .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
-        a.text-lg.font-medium(href='#') Lash Slick
-        a.font-light(href='#' class='default:text-gray-900') film form mascara
-      button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
-        span.mx-4.text-sm Add to Cart
-        span.mx-4.text-sm $16
+  if error 
+    .bg-red-100.border.border-red-400.text-red-700.px-4.py-3.rounded.relative(role='alert')
+      strong.font-bold SẢN PHẨM BẠN TÌM KIẾM KHÔNG TỒN TẠI
+      span.block(class='sm:inline') 
+      span.absolute.top-0.bottom-0.right-0.px-4.py-3
+        svg.fill-current.h-6.w-6.text-red-500(role='button' xmlns='http://www.w3.org/2000/svg' viewbox='0 0 20 20')
+          title Close
+          path(d='M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z')
+
+  else if data
+    .grid.mx-16.gap-8(class='lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2')
+      -var n = 0;
+      each value in data
+        .flex.flex-col.bg-gray-100
+          img(src='h1.png' alt='Boy Brow')
+          .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+            a.text-lg.font-medium(href='#')=data[n].TenSP
+            a.font-light(href='#' class='default:text-gray-900')=data[n].TinhTrangSP
+          button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+            span.mx-4.text-sm Add to Cart
+            span.mx-4.text-sm=data[n].DonGiaSP
+        - n++;
+  else
+    .grid.mx-16.gap-8(class='lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2')
+      .flex.flex-col.bg-gray-100
+        img(src='h1.png' alt='Boy Brow')
+        .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+          a.text-lg.font-medium(href='#') Boy Brow
+          a.font-light(href='#' class='default:text-gray-900') grooming pomade
+        button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+          span.mx-4.text-sm Add to Cart
+          span.mx-4.text-sm $16
+      .flex.flex-col.bg-gray-100
+        img(src='h2.jpg' alt='Cloud Paint')
+        .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+          a.text-lg.font-medium(href='#') Cloud Paint
+          a.font-light(href='#' class='default:text-gray-900') seamless cheek color
+        button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+          span.mx-4.text-sm Add to Cart
+          span.mx-4.text-sm $18
+      .flex.flex-col.bg-gray-100
+        img(src='h3.jpg' alt='Generation G')
+        .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+          a.text-lg.font-medium(href='#') Generation G
+          a.font-light(href='#' class='default:text-gray-900') sheer matte lipstick
+        button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+          span.mx-4.text-sm Add to Cart
+          span.mx-4.text-sm $18
+      .flex.flex-col.bg-gray-100
+        img(src='h4.png' alt='Lip Gloss')
+        .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+          a.text-lg.font-medium(href='#') Lip Gloss
+          a.font-light(href='#' class='default:text-gray-900') cushiony glassy shine
+        button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+          span.mx-4.text-sm Add to Cart
+          span.mx-4.text-sm $14
+      .flex.flex-col.bg-gray-100
+        img(src='h5.jpg' alt='Brow Flick')
+        .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+          a.text-lg.font-medium(href='#') Brow Flick
+          a.font-light(href='#' class='default:text-gray-900') microfine detailing pen
+        button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+          span.mx-4.text-sm Add to Cart
+          span.mx-4.text-sm $18
+      .flex.flex-col.bg-gray-100
+        img(src='h6.png' alt='Lash Slick')
+        .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+          a.text-lg.font-medium(href='#') Lash Slick
+          a.font-light(href='#' class='default:text-gray-900') film form mascara
+        button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+          span.mx-4.text-sm Add to Cart
+          span.mx-4.text-sm $16
+      .flex.flex-col.bg-gray-100
+        img(src='h6.png' alt='Lash Slick')
+        .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+          a.text-lg.font-medium(href='#') Lash Slick
+          a.font-light(href='#' class='default:text-gray-900') film form mascara
+        button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+          span.mx-4.text-sm Add to Cart
+          span.mx-4.text-sm $16
+      .flex.flex-col.bg-gray-100
+        img(src='h6.png' alt='Lash Slick')
+        .flex.flex-col.mx-2.mt-4.mb-3(class='hover:text-blue-800 hover:underline')
+          a.text-lg.font-medium(href='#') Lash Slick
+          a.font-light(href='#' class='default:text-gray-900') film form mascara
+        button.mx-2.mb-3.max-w-max.bg-white.border.rounded.flex.justify-between.p-2(class='hover:border-gray-600')
+          span.mx-4.text-sm Add to Cart
+          span.mx-4.text-sm $16
