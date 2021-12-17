@@ -2,7 +2,7 @@
 GO
 
 --TÌM KIẾM SP (Theo chủ đề)
-CREATE OR ALTER PROC TIMEKIEMSP_CHUDE @ChuDe nvarchar(20), @ChuDe_2 nvarchar(20)
+CREATE OR ALTER PROC TIMEKIEMSP_CHUDE @ChuDe NVARCHAR (20), @ChuDe_2 NVARCHAR(20) = NULL
 AS
 BEGIN
 	IF @ChuDe_2 = N'' OR @ChuDe_2 IS NULL
@@ -19,6 +19,8 @@ BEGIN
 		WHERE ChuDe = @ChuDe AND LoaiChuDe = @ChuDe_2
 	END
 END
+GO
+EXEC TIMEKIEMSP_CHUDE N'Bánh', N'Socola'
 GO
 
 --TÌM KIẾM SP
