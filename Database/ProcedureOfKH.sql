@@ -59,7 +59,7 @@ BEGIN
 		END
 		INSERT CT_HOADON(MaHD,MaSP,SoLuong) VALUES (@MAHD, @MASP, @SL)
 	END
-	SELECT @MAHD AS 'MAHD'	--return MAHOADON để dùng cho lần add tiếp theo
+	SELECT @MAHD AS 'MaHD'	--return MAHOADON để dùng cho lần add tiếp theo
 END
 GO
 --ÁP DỤNG VOUCHER
