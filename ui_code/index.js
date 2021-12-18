@@ -100,6 +100,79 @@ app.post('/chamcong', (req, res) => {
   });
 });
 
+app.post('/taovoucher', (req, res) => {
+  const request = new sql.Request();
+  let query = "THEMVOUCHER_GIAMGIA " + req.body.MAVC + ',' + req.body.GTRI + ',' + "'" + req.body.HSD + "'" + ',' + req.body.SL;
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    res.locals.mess = true;
+    res.render('manager');
+  });
+});
+
+app.get('/loadData', (req, res) => {
+  const request = new sql.Request();
+  let query = "THONGKEBANCHAY";
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    if (recordset.recordset == undefined) {
+      res.locals.errorData = true;
+      res.render('manager');
+    } else {
+      let data = [];
+      let datasize = recordset.recordset.length > 50 ? 52 : recordset.recordset.length;
+      for(let i = 0; i < datasize; i++) {
+        data.push(recordset.recordset[i]);
+      }
+      res.locals.data = data;
+      // send records as a response
+      res.render('manager');
+    }
+  });
+});
+
+app.get('/loadData2', (req, res) => {
+  const request = new sql.Request();
+  let query = "THONGKEBANCHAM";
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    if (recordset.recordset == undefined) {
+      res.locals.errorData = true;
+      res.render('manager');
+    } else {
+      let data = [];
+      let datasize = recordset.recordset.length > 50 ? 52 : recordset.recordset.length;
+      for(let i = 0; i < datasize; i++) {
+        data.push(recordset.recordset[i]);
+      }
+      res.locals.data2 = data;
+      // send records as a response
+      res.render('manager');
+    }
+  });
+});
+
+app.get('/loadData3', (req, res) => {
+  const request = new sql.Request();
+  let query = "THONGKEDOANHTHU";
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    if (recordset.recordset == undefined) {
+      res.locals.errorData = true;
+      res.render('manager');
+    } else {
+      let data = [];
+      let datasize = recordset.recordset.length > 50 ? 52 : recordset.recordset.length;
+      for(let i = 0; i < datasize; i++) {
+        data.push(recordset.recordset[i]);
+      }
+      res.locals.data3 = data;
+      // send records as a response
+      res.render('manager');
+    }
+  });
+});
+
 app.get('/admin', (req, res) => {
   res.render('admin');
 });
