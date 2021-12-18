@@ -59,7 +59,7 @@ BEGIN
 		END
 		INSERT CT_HOADON(MaHD,MaSP,SoLuong) VALUES (@MAHD, @MASP, @SL)
 	END
-	SELECT @MAHD AS "MaHD"	--return MAHOADON để dùng cho lần add tiếp theo
+	SELECT @MAHD AS 'MAHD'	--return MAHOADON để dùng cho lần add tiếp theo
 END
 GO
 --ÁP DỤNG VOUCHER
@@ -75,7 +75,6 @@ BEGIN
 	UPDATE HOADON SET MaVoucher = @VOUCHER WHERE MAHD = @MAHD
 END
 GO
-
 --Thanh toán
 CREATE OR ALTER PROCEDURE THANHTOAN @MAHD INT, 
 									@HINHTHUCTT NVARCHAR(50),
