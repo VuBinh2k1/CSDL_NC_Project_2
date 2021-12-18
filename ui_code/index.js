@@ -13,6 +13,8 @@ const sql = require('mssql');
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+let MaHD_Local = 0;
+
 // config for your database
 const config = {
   user: 'phuoctran',
@@ -28,11 +30,37 @@ sql.connect(config, function(err) {
 });
 
 app.get('/', (req, res) => {
-  res.render('index');
+  const request = new sql.Request();
+  let query = "TIMEKIEMSP_CHUDE N'Bó hoa tươi'";
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    let data = [];
+    let datasize = recordset.recordset.length > 50 ? 52 : recordset.recordset.length;
+    for(let i = 0; i < datasize; i++) {
+      data.push(recordset.recordset[i]);
+    }
+    res.locals.data = data;
+    // send records as a response
+    res.render('index');
+  });
 });
 
 app.get('/cart', (req, res) => {
-  res.render('cart');
+  const request = new sql.Request();
+  let query = "SELECT CT.MaSP, SP.TenSP, CT.SoLuong, CT.ThanhTien FROM SANPHAM SP, CT_HOADON CT WHERE SP.MASP = CT.MaSP AND MaHD = " + MaHD_Local;
+  console.log(MaHD_Local);
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    let data = [];
+    let datasize = recordset.recordset.length > 50 ? 52 : recordset.recordset.length;
+    for(let i = 0; i < datasize; i++) {
+      data.push(recordset.recordset[i]);
+    }
+    console.log(recordset);
+    res.locals.data = data;
+    // send records as a response
+    res.render('cart');
+  });
 });
 
 app.post('/', function(req, res) {
@@ -89,7 +117,7 @@ app.post('/chamcong', (req, res) => {
   let query = "XEM_BCCONG " + req.body.search;
   request.query(query, function(err, recordset) {
     if (err) console.log(err);
-    if (recordset.recordset == undefined) {
+    if (recordset == undefined) {
       res.locals.errorChamCong = true;
       res.render('staff');
     } else {
@@ -114,8 +142,9 @@ app.get('/loadData', (req, res) => {
   const request = new sql.Request();
   let query = "THONGKEBANCHAY";
   request.query(query, function(err, recordset) {
+    localVars = 1;
     if (err) console.log(err);
-    if (recordset.recordset == undefined) {
+    if (recordset == undefined) {
       res.locals.errorData = true;
       res.render('manager');
     } else {
@@ -136,7 +165,7 @@ app.get('/loadData2', (req, res) => {
   let query = "THONGKEBANCHAM";
   request.query(query, function(err, recordset) {
     if (err) console.log(err);
-    if (recordset.recordset == undefined) {
+    if (recordset == undefined) {
       res.locals.errorData = true;
       res.render('manager');
     } else {
@@ -153,11 +182,12 @@ app.get('/loadData2', (req, res) => {
 });
 
 app.get('/loadData3', (req, res) => {
+  console.log(localVars);
   const request = new sql.Request();
   let query = "THONGKEDOANHTHU";
   request.query(query, function(err, recordset) {
     if (err) console.log(err);
-    if (recordset.recordset == undefined) {
+    if (recordset == undefined) {
       res.locals.errorData = true;
       res.render('manager');
     } else {
@@ -170,6 +200,55 @@ app.get('/loadData3', (req, res) => {
       // send records as a response
       res.render('manager');
     }
+  });
+});
+
+app.post('/themsanpham', (req, res) => {
+  const request = new sql.Request();
+  let query = "THEMSP " + req.body.LOAI + ',' + "'" + req.body.TENSP + "'" + ',' + "'" + req.body.NGAYST + "'" + ',' + req.body.GIASP + ',' + req.body.GIAMGIA + ',' + req.body.TTINSP + ',' + "'" + req.body.TTSP + "'";
+  if(req.body.ChuDe !== "") {
+    query = query + ',' + req.body.ChuDe;
+  }
+  if(req.body.ChuDe_2 !== "") {
+    query = query + ',' + req.body.ChuDe_2;
+  }
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    res.locals.mess = true;
+    res.render('admin');
+  });
+});
+
+app.post('/themchude', (req, res) => {
+  const request = new sql.Request();
+  let query = "THEM_CHUDE " + req.body.MASP + ',' + req.body.ChuDe;
+  if(req.body.ChuDe_2 !== "") {
+    query = query + ',' + req.body.ChuDe_2;
+  }
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    res.locals.mess = true;
+    res.render('admin');
+  });
+});
+
+app.post('/hethang', (req, res) => {
+  const request = new sql.Request();
+  let query = "XOA_SP " + req.body.MASP;
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    res.locals.mess = true;
+    res.render('admin');
+  });
+});
+
+app.post('/addToCart', (req, res) => {
+  const request = new sql.Request();
+  let query = "THEMVAOGIOHANG " + '5' + ',' + MaHD_Local + ',' + req.body.MaSP + ',' + req.body.SL;
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    MaHD_Local = recordset.recordset[0].MaHD;
+    res.redirect('/cart');
   });
 });
 
