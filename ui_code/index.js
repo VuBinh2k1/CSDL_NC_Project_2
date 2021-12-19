@@ -45,10 +45,45 @@ app.get('/', (req, res) => {
   });
 });
 
+app.get('/deleteItem', (req, res) => {
+  const request = new sql.Request();
+  let query = "DELETE CT_HOADON WHERE MaSP =" + req.query.MaSP+ " AND MaHD =" + MaHD_Local;
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    // send records as a response
+    res.redirect('/cart');
+  });
+})
+
+app.post('/thanhtoan', (req, res) => {
+  const request = new sql.Request();
+  let query;
+  if(req.body.guitang === 'true') {
+    query = "THANHTOAN " + MaHD_Local + ',' + req.body.HINHTHUCTT + ',' + "'" + req.body.HOTENNGUOINHAN + "'" + ',' + req.body.SDTNGNHAN + ',' + "'" + req.body.DIACHI + "'"  + ',' + "'" + req.body.EMAIL + "'" + ',' + "'" + req.body.THOIGIANGIAO + "'" + ',' + "'" + req.body.LOINHAN + "'";
+  } else {
+    query = "THANHTOAN " + MaHD_Local + ',' + req.body.HINHTHUCTT + ',' + "''" + ',' + "''" + ',' + "''" + ',' +  "''" + ',' + "'" + req.body.THOIGIANGIAO + "'" + ',' + "'" + req.body.LOINHAN + "'";
+  }
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    // send records as a response
+    MaHD_Local = 0;
+    res.redirect('/');
+  });
+})
+
+app.post('/addVoucher', (req, res) => {
+  const request = new sql.Request();
+  let query = "APDUNGVOUCHER " + MaHD_Local + ',' + "'" + req.body.voucher + "'";
+  request.query(query, function(err, recordset) {
+    if (err) console.log(err);
+    // send records as a response
+    res.redirect('/cart');
+  });
+});
+
 app.get('/cart', (req, res) => {
   const request = new sql.Request();
-  let query = "SELECT CT.MaSP, SP.TenSP, CT.SoLuong, CT.ThanhTien FROM SANPHAM SP, CT_HOADON CT WHERE SP.MASP = CT.MaSP AND MaHD = " + MaHD_Local;
-  console.log(MaHD_Local);
+  let query = "SELECT CT.MaSP, SP.TenSP, CT.SoLuong, CT.ThanhTien CT, HD.TongTien FROM SANPHAM SP, CT_HOADON CT, HOADON HD WHERE SP.MASP = CT.MaSP AND HD.MaHD = CT.MaHD AND CT.MaHD =" + MaHD_Local;
   request.query(query, function(err, recordset) {
     if (err) console.log(err);
     let data = [];
@@ -56,8 +91,9 @@ app.get('/cart', (req, res) => {
     for(let i = 0; i < datasize; i++) {
       data.push(recordset.recordset[i]);
     }
-    console.log(recordset);
-    res.locals.data = data;
+    if(data.length !== 0) {
+      res.locals.data = data;
+    }
     // send records as a response
     res.render('cart');
   });
@@ -244,10 +280,11 @@ app.post('/hethang', (req, res) => {
 
 app.post('/addToCart', (req, res) => {
   const request = new sql.Request();
-  let query = "THEMVAOGIOHANG " + '5' + ',' + MaHD_Local + ',' + req.body.MaSP + ',' + req.body.SL;
+  let query = "THEMVAOGIOHANG " + '6' + ',' + MaHD_Local + ',' + req.body.MaSP + ',' + req.body.SL;
   request.query(query, function(err, recordset) {
     if (err) console.log(err);
     MaHD_Local = recordset.recordset[0].MaHD;
+
     res.redirect('/cart');
   });
 });

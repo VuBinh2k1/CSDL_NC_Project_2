@@ -18,21 +18,22 @@ head
         h3.font-semibold.text-center.text-gray-600.text-xs.uppercase.text-center(class='w-1/5') Quantity
         h3.font-semibold.text-center.text-gray-600.text-xs.uppercase.text-center(class='w-1/5') Price
         h3.font-semibold.text-center.text-gray-600.text-xs.uppercase.text-center(class='w-1/5') Total
-      - var n = 0;
-      each value in data
-        .flex.items-center.-mx-8.px-6.py-5(class='hover:bg-gray-100')
-          .flex(class='w-2/5')
-            // product
-            .w-20
-              img.h-24(src='h1.png' alt='')
-            .flex.flex-col.justify-between.ml-4.flex-grow
-              span.font-bold.text-sm=data[n].TenSP
-              span.text-red-500.text-xs=data[n].MaSP
-              a.font-semibold.text-gray-500.text-xs(href='#' class='hover:text-red-500') Remove
-          .flex.justify-center(class='w-1/5')
-            p.mx-2.border.text-center.w-8=data[n].SoLuong
-          span.text-center.font-semibold.text-sm(class='w-1/5')=data[n].ThanhTien + 'VND'
-        - n++;
+      if data
+        - var n = 0;
+        each value in data
+          .flex.items-center.-mx-8.px-6.py-5(class='hover:bg-gray-100')
+            .flex(class='w-2/5')
+              // product
+              .w-20
+                img.h-24(src='h1.png' alt='')
+              .flex.flex-col.justify-between.ml-4.flex-grow
+                span.font-bold.text-sm=data[n].TenSP
+                span.text-red-500.text-xs=data[n].MaSP
+                a.font-semibold.text-gray-500.text-xs(href='/deleteItem?MaSP='+data[n].MaSP class='hover:text-red-500') Remove
+            .flex.justify-center(class='w-1/5')
+              p.mx-2.border.text-center.w-8=data[n].SoLuong
+            span.text-center.font-semibold.text-sm(class='w-1/5')=data[n].CT + 'VND'
+          - n++;
       a.flex.font-semibold.text-indigo-600.text-sm.mt-10(href='/')
         svg.fill-current.mr-2.text-indigo-600.w-4(viewbox='0 0 448 512')
           path(d='M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z')
@@ -41,17 +42,31 @@ head
       h1.font-semibold.text-2xl.border-b.pb-8 Order Summary
       .flex.justify-between.mt-10.mb-5
         span.font-semibold.text-sm.uppercase Items 3
-        span.font-semibold.text-sm 590$
+        if data
+          span.font-semibold.text-sm=data[0].TongTien
+        else 
+          span.font-semibold.text-sm=0
       div
-        label.font-medium.inline-block.mb-3.text-sm.uppercase Shipping
-        select.block.p-2.text-gray-600.w-full.text-sm
-          option Standard shipping - $10.00
-      .py-10
+      form(action='/addVoucher' method='POST').py-10
         label.font-semibold.inline-block.mb-3.text-sm.uppercase(for='promo') Promo Code
-        input#promo.p-2.text-sm.w-full(type='text' placeholder='Enter your code')
-      button.bg-red-500.px-5.py-2.text-sm.text-white.uppercase(class='hover:bg-red-600') Apply
-      .border-t.mt-8
-        .flex.font-semibold.justify-between.py-6.text-sm.uppercase
-          span Total cost
-          span $600
-        button.bg-indigo-500.font-semibold.py-3.text-sm.text-white.uppercase.w-full(class='hover:bg-indigo-600') Checkout
+        input#promo.p-2.text-sm.w-full(type='text' name='voucher' placeholder='Enter your code')
+        button.bg-red-500.px-5.py-2.text-sm.text-white.uppercase(type="submit" class='hover:bg-red-600') Apply
+      form(action='/thanhtoan' method='POST').py-10
+        label.font-semibold.inline-block.mb-3.text-sm.uppercase THANH TOÁN
+        input.p-2.text-sm.w-full(type='text' name='HINHTHUCTT' placeholder='HÌNH THỨC THANH TOÁN')
+        input.p-2.text-sm.w-full(type='text' name='THOIGIANGIAO' placeholder='THỜI GIAN GIAO')
+        input.p-2.text-sm.w-full(type='text' name='LOINHAN' placeholder='LỜI NHẮN')
+        input(type="checkbox" id="checkbox" name="guitang" value="true")
+        <label for="checkbox"> Gửi tặng </label><br>
+        input.p-2.text-sm.w-full(type='text' name='HOTENNGUOINHAN' placeholder='HỌ TÊN NGƯỜI NHẬN')
+        input.p-2.text-sm.w-full(type='text' name='SDTNGNHAN' placeholder='SỐ ĐIỆN THOẠI')
+        input.p-2.text-sm.w-full(type='text' name='DIACHI' placeholder='ĐỊA CHỈ')
+        input.p-2.text-sm.w-full(type='text' name='EMAIL' placeholder='EMAIL')
+        .border-t.mt-8
+          .flex.font-semibold.justify-between.py-6.text-sm.uppercase
+            span Total cost
+            if data
+              span=data[0].TongTien
+            else
+              span= 0
+          button.bg-indigo-500.font-semibold.py-3.text-sm.text-white.uppercase.w-full(type='submit' class='hover:bg-indigo-600') Checkout
