@@ -9,7 +9,7 @@ GROUP BY MaKHGui
 ORDER BY SUM(TONGTIEN) DESC
 
 --Truy vấn 2: Tìm kiếm sản phẩm theo chủ đề
-DECLARE @ChuDe VARCHAR(50)= 'Cây thông'
+DECLARE @ChuDe NVARCHAR(50)= N'Bình hoa tươi'
 
 SELECT MaSP, TenSP
 FROM SANPHAM_CHUDE
@@ -29,9 +29,7 @@ DECLARE @MaCH INT = 18
 SELECT NL.MaNL, NL.TenNL, NL.SoLuongToiThieu - SL.SoLuongCH AS 'Số lượng cần mua thêm ít nhất'
 FROM NGUYENLIEU NL 
 JOIN SOLUONG_NL SL ON NL.MaNL = SL.MaNL 
-JOIN CUAHANG CH ON CH.MaCH = SL.MaCH
---WHERE NL.SoLuongKHO < NL.SoLuongToiThieu
-WHERE CH.MaCH = @MaCH AND
+WHERE SL.MaCH = @MaCH AND
 	  SL.SoLuongCH < NL.SoLuongToiThieu
 
 --Truy vấn 5: Thống kê doanh thu của từng cửa hàng theo quý (mỗi 3 tháng)
