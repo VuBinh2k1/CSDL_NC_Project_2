@@ -33,7 +33,7 @@ BEGIN
 		RETURN
 	END
 
-	SELECT NV.MaNV, NV.TenNV, NV.LoaiNV, PCC.GioCham, PCC.NgayCham
+	SELECT NV.MaNV, NV.TenNV, NV.LoaiNV, convert(varchar, PCC.GioCham, 8) as 'GioCham', convert(varchar, PCC.NgayCham, 103) as 'NgayCham'
 	FROM NHANVIEN NV, PHIEUCHAMCONG PCC
 	WHERE PCC.MaNV = NV.MaNV AND NV.MaNV = @MANV
 END

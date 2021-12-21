@@ -28,10 +28,10 @@ nav.bg-gray-800.pt-2.pb-1.px-1.mt-0.h-auto.fixed.w-full.z-20.top-0(class='md:pt-
             path(d='M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z')
     .flex.w-full.pt-2.content-center.justify-between(class='md:w-1/3 md:justify-end')
       ul.list-reset.flex.justify-between.flex-1.items-center(class='md:flex-none')
-        li.flex-1(class='md:flex-none md:mr-3')
-          a.inline-block.py-2.px-4.text-white.no-underline(href='#') Active
-        li.flex-1(class='md:flex-none md:mr-3')
-          a.inline-block.text-gray-600.no-underline.py-2.px-4(class='hover:text-gray-200 hover:text-underline' href='#') link
+        //- li.flex-1(class='md:flex-none md:mr-3')
+        //-   a.inline-block.py-2.px-4.text-white.no-underline(href='#') Active
+        //- li.flex-1(class='md:flex-none md:mr-3')
+        //-   a.inline-block.text-gray-600.no-underline.py-2.px-4(class='hover:text-gray-200 hover:text-underline' href='#') link
         li.flex-1(class='md:flex-none md:mr-3')
           .relative.inline-block
             button.drop-button.text-white(onclick="toggleDD('myDropdown')" class='focus:outline-none')
@@ -52,25 +52,25 @@ nav.bg-gray-800.pt-2.pb-1.px-1.mt-0.h-auto.fixed.w-full.z-20.top-0(class='md:pt-
                 i.fas.fa-sign-out-alt.fa-fw
                 |  Main
 .flex.flex-col(class='md:flex-row')
-  .bg-gray-800.shadow-xl.h-16.fixed.bottom-0.mt-12.z-10.w-full(class='md:relative md:h-screen md:w-48')
+  .bg-gray-800.shadow-xl.h-fit.fixed.bottom-0.mt-12.z-10.w-full(class='md:relative md:h-fit md:w-48')
     .content-center.text-left.justify-between(class='md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 md:content-start')
       ul.list-reset.flex.flex-row.py-0.px-1.text-center(class='md:flex-col md:py-3 md:px-2 md:text-left')
-        li.mr-3.flex-1
-          a.block.py-1.pl-1.align-middle.text-white.no-underline.border-b-2.border-gray-800(href='#' class='md:py-3 hover:text-white hover:border-pink-500')
-            i.fas.fa-tasks.pr-0(class='md:pr-3')
-            span.pb-1.text-xs.text-gray-600.block(class='md:pb-0 md:text-base md:text-gray-400 md:inline-block') Tasks
-        li.mr-3.flex-1
-          a.block.py-1.pl-1.align-middle.text-white.no-underline.border-b-2.border-gray-800(href='#' class='md:py-3 hover:text-white hover:border-purple-500')
-            i.fa.fa-envelope.pr-0(class='md:pr-3')
-            span.pb-1.text-xs.text-gray-600.block(class='md:pb-0 md:text-base md:text-gray-400 md:inline-block') Messages
+        //- li.mr-3.flex-1
+        //-   a.block.py-1.pl-1.align-middle.text-white.no-underline.border-b-2.border-gray-800(href='#' class='md:py-3 hover:text-white hover:border-pink-500')
+        //-     i.fas.fa-tasks.pr-0(class='md:pr-3')
+        //-     span.pb-1.text-xs.text-gray-600.block(class='md:pb-0 md:text-base md:text-gray-400 md:inline-block') Tasks
+        //- li.mr-3.flex-1
+        //-   a.block.py-1.pl-1.align-middle.text-white.no-underline.border-b-2.border-gray-800(href='#' class='md:py-3 hover:text-white hover:border-purple-500')
+        //-     i.fa.fa-envelope.pr-0(class='md:pr-3')
+        //-     span.pb-1.text-xs.text-gray-600.block(class='md:pb-0 md:text-base md:text-gray-400 md:inline-block') Messages
         li.mr-3.flex-1
           a.block.py-1.pl-1.align-middle.text-white.no-underline.border-b-2.border-blue-600(href='#' class='md:py-3 hover:text-white')
-            i.fas.fa-chart-area.pr-0.text-blue-600(class='md:pr-3')
-            span.pb-1.text-xs.text-white.block(class='md:pb-0 md:text-base md:text-white md:inline-block') Analytics
-        li.mr-3.flex-1
-          a.block.py-1.pl-0.align-middle.text-white.no-underline.border-b-2.border-gray-800(href='#' class='md:py-3 md:pl-1 hover:text-white hover:border-red-500')
-            i.fa.fa-wallet.pr-0(class='md:pr-3')
-            span.pb-1.text-xs.text-gray-600.block(class='md:pb-0 md:text-base md:text-gray-400 md:inline-block') Payments
+            i.fas.fa-tasks.pr-0.text-blue-600(class='md:pr-3')
+            span.pb-1.text-xs.text-white.block(class='md:pb-0 md:text-base md:text-white md:inline-block') Tasks
+        //- li.mr-3.flex-1
+        //-   a.block.py-1.pl-0.align-middle.text-white.no-underline.border-b-2.border-gray-800(href='#' class='md:py-3 md:pl-1 hover:text-white hover:border-red-500')
+        //-     i.fa.fa-wallet.pr-0(class='md:pr-3')
+        //-     span.pb-1.text-xs.text-gray-600.block(class='md:pb-0 md:text-base md:text-gray-400 md:inline-block') Payments
   .main-content.flex-1.bg-gray-100.mt-12.pb-24(class='md:mt-2 md:pb-5')
     .bg-gray-800.pt-3
       .rounded-tl-3xl.bg-gradient-to-r.from-blue-900.to-gray-800.p-4.shadow.text-2xl.text-white
@@ -84,50 +84,50 @@ nav.bg-gray-800.pt-2.pb-1.px-1.mt-0.h-auto.fixed.w-full.z-20.top-0(class='md:pt-
           .flex.flex-wrap.-mx-3.mb-6
             .w-full.px-3.mb-6(class='md:w-1/2 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-first-name')
-                | LOAI
-              input#grid-first-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-500.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white' type='text' name='LOAI' placeholder='LOAI')
+                | LOẠI
+              input#grid-first-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-500.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white' type='text' name='LOAI' placeholder='Loại')
             .w-full.px-3(class='md:w-1/2')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-last-name')
-                | TEN SAN PHAM
-              input#grid-last-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' name='TENSP' type='text' placeholder='TENSP')
+                | TÊN SẢN PHẨM
+              input#grid-last-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' name='TENSP' type='text' placeholder='Tên sản phẩm')
           .flex.flex-wrap.-mx-3.mb-6
             .w-full.px-3
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-password')
-                | NGAY SANG TAO
-              input#grid-password.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' name='NGAYST' type='text' placeholder='NGAYST')
+                | NGÀY SÁNG TẠO
+              input#grid-password.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' name='NGAYST' type='text' placeholder='Ngày sáng tạo')
           .flex.flex-wrap.-mx-3.mb-2
             .w-full.px-3.mb-6(class='md:w-1/3 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-city')
-                | GIA SAN PHAM
-              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='GIASP' placeholder='GIASP')
+                | GIÁ SẢN PHẨM
+              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='GIASP' placeholder='Giá sản phẩm')
           .flex.flex-wrap.-mx-3.mb-2
             .w-full.px-3.mb-6(class='md:w-1/3 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-city')
-                | GIAM GIA
-              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='GIAMGIA' placeholder='GIAMGIA')
+                | GIẢM GIÁ
+              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='GIAMGIA' placeholder='Giảm giá')
               .flex.flex-wrap.-mx-3.mb-2
             .w-full.px-3.mb-6(class='md:w-1/3 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-city')
-                | THONG TIN SAN PHAM
-              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='TTINSP' placeholder='TTINSP')
+                | THÔNG TIN SẢN PHẨM
+              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='TTINSP' placeholder='Thông tin SP')
               .flex.flex-wrap.-mx-3.mb-2
             .w-full.px-3.mb-6(class='md:w-1/3 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-city')
-                | TINH TRANG SAN PHAM
-              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='TTSP' placeholder='TTSP')
+                | TÌNH TRẠNG SẢN PHẨM
+              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='TTSP' placeholder='Tình trạng SP')
               .flex.flex-wrap.-mx-3.mb-2
             .w-full.px-3.mb-6(class='md:w-1/3 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-city')
-                | CHU DE 1
-              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='ChuDe' placeholder='ChuDe')
+                | CHỦ ĐỀ 1
+              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='ChuDe' placeholder='Chủ đề')
               .flex.flex-wrap.-mx-3.mb-2
             .w-full.px-3.mb-6(class='md:w-1/3 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-city')
-                | CHU DE 2
-              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='ChuDe_2' placeholder='ChuDe_2')
+                | CHỦ ĐỀ 2
+              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='ChuDe_2' placeholder='Chủ đề 2')
             .w-full.px-3.mb-6(class='md:w-1/3 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-city') TẠO
-              button#grid-zip.appearance-none.block.w-full.bg-red-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='submit') CREATE
+              button#grid-zip.appearance-none.block.w-full.bg-red-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='submit') TẠO
     .flex.flex-wrap
       .w-full.p-6(class='md:w-1/2 xl:w-1/3')
         button#grid-zip.appearance-none.block.w-full.bg-yellow-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500') THÊM CHỦ ĐỀ CHO SẢN PHẨM
@@ -136,20 +136,20 @@ nav.bg-gray-800.pt-2.pb-1.px-1.mt-0.h-auto.fixed.w-full.z-20.top-0(class='md:pt-
           .flex.flex-wrap.-mx-3.mb-6
             .w-full.px-3.mb-6(class='md:w-1/2 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-first-name')
-                | MASP
-              input#grid-first-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-500.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white' type='text' name='MASP' placeholder='MASP')
+                | MÃ SẢN PHẨM
+              input#grid-first-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-500.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white' type='text' name='MASP' placeholder='Mã sản phẩm')
             .w-full.px-3(class='md:w-1/2')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-last-name')
-                | CHU DE 1
-              input#grid-last-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' name='ChuDe' type='text' placeholder='ChuDe')
+                | CHỦ ĐỀ 1
+              input#grid-last-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' name='ChuDe' type='text' placeholder='Chủ đề')
           .flex.flex-wrap.-mx-3.mb-6
             .w-full.px-3
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-password')
-                | CHU DE 2
-              input#grid-password.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' name='ChuDe_2' type='text' placeholder='ChuDe_2')
+                | CHỦ ĐỀ 2
+              input#grid-password.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' name='ChuDe_2' type='text' placeholder='Chủ đề 2')
             .w-full.px-3.mb-6(class='md:w-1/3 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-city') THÊM
-              button#grid-zip.appearance-none.block.w-full.bg-red-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='submit') ADD
+              button#grid-zip.appearance-none.block.w-full.bg-red-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='submit') THÊM
     .flex.flex-wrap
       .w-full.p-6(class='md:w-1/2 xl:w-1/3')
         button#grid-zip.appearance-none.block.w-full.bg-green-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500') CẬP NHẬT HẾT HÀNG
@@ -158,10 +158,10 @@ nav.bg-gray-800.pt-2.pb-1.px-1.mt-0.h-auto.fixed.w-full.z-20.top-0(class='md:pt-
           .flex.flex-wrap.-mx-3.mb-6
             .w-full.px-3.mb-6(class='md:w-1/2 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-first-name')
-                | MASP
-              input#grid-first-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-500.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white' type='text' name='MASP' placeholder='MASP')
+                | MÃ SẢN PHẨM
+              input#grid-first-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-500.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white' type='text' name='MASP' placeholder='Mã sản phẩm')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-city') CẬP NHẬT HẾT HÀNG
-              button#grid-zip.appearance-none.block.w-full.bg-red-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='submit') UPDATE
+              button#grid-zip.appearance-none.block.w-full.bg-red-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='submit') CẬP NHẬT
 
 script.
   /*Toggle dropdown list*/

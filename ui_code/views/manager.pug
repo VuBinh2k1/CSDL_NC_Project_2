@@ -28,10 +28,10 @@ nav.bg-gray-800.pt-2.pb-1.px-1.mt-0.h-auto.fixed.w-full.z-20.top-0(class='md:pt-
             path(d='M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z')
     .flex.w-full.pt-2.content-center.justify-between(class='md:w-1/3 md:justify-end')
       ul.list-reset.flex.justify-between.flex-1.items-center(class='md:flex-none')
-        li.flex-1(class='md:flex-none md:mr-3')
-          a.inline-block.py-2.px-4.text-white.no-underline(href='#') Active
-        li.flex-1(class='md:flex-none md:mr-3')
-          a.inline-block.text-gray-600.no-underline.py-2.px-4(class='hover:text-gray-200 hover:text-underline' href='#') link
+        //- li.flex-1(class='md:flex-none md:mr-3')
+        //-   a.inline-block.py-2.px-4.text-white.no-underline(href='#') Active
+        //- li.flex-1(class='md:flex-none md:mr-3')
+        //-   a.inline-block.text-gray-600.no-underline.py-2.px-4(class='hover:text-gray-200 hover:text-underline' href='#') link
         li.flex-1(class='md:flex-none md:mr-3')
           .relative.inline-block
             button.drop-button.text-white(onclick="toggleDD('myDropdown')" class='focus:outline-none')
@@ -52,25 +52,25 @@ nav.bg-gray-800.pt-2.pb-1.px-1.mt-0.h-auto.fixed.w-full.z-20.top-0(class='md:pt-
                 i.fas.fa-sign-out-alt.fa-fw
                 |  Main
 .flex.flex-col(class='md:flex-row')
-  .bg-gray-800.shadow-xl.h-16.fixed.bottom-0.mt-12.z-10.w-full(class='md:relative md:h-screen md:w-48')
+  .bg-gray-800.shadow-xl.h-fit.fixed.bottom-0.mt-12.z-10.w-full(class='md:relative md:h-fit md:w-48')
     .content-center.text-left.justify-between(class='md:mt-12 md:w-48 md:fixed md:left-0 md:top-0 md:content-start')
       ul.list-reset.flex.flex-row.py-0.px-1.text-center(class='md:flex-col md:py-3 md:px-2 md:text-left')
-        li.mr-3.flex-1
-          a.block.py-1.pl-1.align-middle.text-white.no-underline.border-b-2.border-gray-800(href='#' class='md:py-3 hover:text-white hover:border-pink-500')
-            i.fas.fa-tasks.pr-0(class='md:pr-3')
-            span.pb-1.text-xs.text-gray-600.block(class='md:pb-0 md:text-base md:text-gray-400 md:inline-block') Tasks
-        li.mr-3.flex-1
-          a.block.py-1.pl-1.align-middle.text-white.no-underline.border-b-2.border-gray-800(href='#' class='md:py-3 hover:text-white hover:border-purple-500')
-            i.fa.fa-envelope.pr-0(class='md:pr-3')
-            span.pb-1.text-xs.text-gray-600.block(class='md:pb-0 md:text-base md:text-gray-400 md:inline-block') Messages
+        //- li.mr-3.flex-1
+        //-   a.block.py-1.pl-1.align-middle.text-white.no-underline.border-b-2.border-gray-800(href='#' class='md:py-3 hover:text-white hover:border-pink-500')
+        //-     i.fas.fa-tasks.pr-0(class='md:pr-3')
+        //-     span.pb-1.text-xs.text-gray-600.block(class='md:pb-0 md:text-base md:text-gray-400 md:inline-block') Tasks
+        //- li.mr-3.flex-1
+        //-   a.block.py-1.pl-1.align-middle.text-white.no-underline.border-b-2.border-gray-800(href='#' class='md:py-3 hover:text-white hover:border-purple-500')
+        //-     i.fa.fa-envelope.pr-0(class='md:pr-3')
+        //-     span.pb-1.text-xs.text-gray-600.block(class='md:pb-0 md:text-base md:text-gray-400 md:inline-block') Messages
         li.mr-3.flex-1
           a.block.py-1.pl-1.align-middle.text-white.no-underline.border-b-2.border-blue-600(href='#' class='md:py-3 hover:text-white')
-            i.fas.fa-chart-area.pr-0.text-blue-600(class='md:pr-3')
-            span.pb-1.text-xs.text-white.block(class='md:pb-0 md:text-base md:text-white md:inline-block') Analytics
-        li.mr-3.flex-1
-          a.block.py-1.pl-0.align-middle.text-white.no-underline.border-b-2.border-gray-800(href='#' class='md:py-3 md:pl-1 hover:text-white hover:border-red-500')
-            i.fa.fa-wallet.pr-0(class='md:pr-3')
-            span.pb-1.text-xs.text-gray-600.block(class='md:pb-0 md:text-base md:text-gray-400 md:inline-block') Payments
+            i.fas.fa-tasks.pr-0.text-blue-600(class='md:pr-3')
+            span.pb-1.text-xs.text-white.block(class='md:pb-0 md:text-base md:text-white md:inline-block') Tasks
+        //- li.mr-3.flex-1
+        //-   a.block.py-1.pl-0.align-middle.text-white.no-underline.border-b-2.border-gray-800(href='#' class='md:py-3 md:pl-1 hover:text-white hover:border-red-500')
+        //-     i.fa.fa-wallet.pr-0(class='md:pr-3')
+        //-     span.pb-1.text-xs.text-gray-600.block(class='md:pb-0 md:text-base md:text-gray-400 md:inline-block') Payments
   .main-content.flex-1.bg-gray-100.mt-12.pb-24(class='md:mt-2 md:pb-5')
     .bg-gray-800.pt-3
       .rounded-tl-3xl.bg-gradient-to-r.from-blue-900.to-gray-800.p-4.shadow.text-2xl.text-white
@@ -90,22 +90,22 @@ nav.bg-gray-800.pt-2.pb-1.px-1.mt-0.h-auto.fixed.w-full.z-20.top-0(class='md:pt-
           .flex.flex-wrap.-mx-3.mb-6
             .w-full.px-3.mb-6(class='md:w-1/2 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-first-name')
-                | MAVC (MÃ VOUCHER)
-              input#grid-first-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-500.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white' type='text' name='MAVC' placeholder='MAVC')
+                | MÃ VOUCHER
+              input#grid-first-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-500.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white' type='text' name='MAVC' placeholder='Mã voucher')
             .w-full.px-3(class='md:w-1/2')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-last-name')
                 | GIÁ TRỊ VOUCHER
-              input#grid-last-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' name='GTRI' type='text' placeholder='GTRI')
+              input#grid-last-name.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' name='GTRI' type='text' placeholder='Giá trị')
           .flex.flex-wrap.-mx-3.mb-6
             .w-full.px-3
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-password')
                 | HẠN SỬ DỤNG
-              input#grid-password.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' name='HSD' type='text' placeholder='HAN SU DUNG')
+              input#grid-password.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.mb-3.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' name='HSD' type='text' placeholder='Hạn sử dụng')
           .flex.flex-wrap.-mx-3.mb-2
             .w-full.px-3.mb-6(class='md:w-1/3 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-city')
                 | SỐ LƯỢNG
-              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='SL' placeholder='SO LUONG')
+              input#grid-city.appearance-none.block.w-full.bg-gray-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='text' name='SL' placeholder='Số lượng')
             .w-full.px-3.mb-6(class='md:w-1/3 md:mb-0')
               label.block.uppercase.tracking-wide.text-gray-700.text-xs.font-bold.mb-2(for='grid-city') TẠO
               button#grid-zip.appearance-none.block.w-full.bg-red-200.text-gray-700.border.border-gray-200.rounded.py-3.px-4.leading-tight(class='focus:outline-none focus:bg-white focus:border-gray-500' type='submit') CREATE
