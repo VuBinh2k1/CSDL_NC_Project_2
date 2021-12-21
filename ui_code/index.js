@@ -153,11 +153,11 @@ app.post('/chamcong', (req, res) => {
   let query = "XEM_BCCONG " + req.body.search;
   request.query(query, function(err, recordset) {
     if (err) console.log(err);
-    if (recordset == undefined) {
+    if (recordset.recordset == undefined) {
       res.locals.errorChamCong = true;
       res.render('staff');
     } else {
-      res.locals.chamcong = recordset.recordset[0];
+      res.locals.chamcong = recordset.recordset;
       // send records as a response
       res.render('staff');
     }
