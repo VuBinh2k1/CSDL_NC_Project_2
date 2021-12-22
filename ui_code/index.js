@@ -59,10 +59,11 @@ app.post('/thanhtoan', (req, res) => {
   const request = new sql.Request();
   let query;
   if(req.body.guitang === 'true') {
-    query = "THANHTOAN " + MaHD_Local + ',' + req.body.HINHTHUCTT + ',' + "'" + req.body.HOTENNGUOINHAN + "'" + ',' + req.body.SDTNGNHAN + ',' + "'" + req.body.DIACHI + "'"  + ',' + "'" + req.body.EMAIL + "'" + ',' + "'" + req.body.THOIGIANGIAO + "'" + ',' + "'" + req.body.LOINHAN + "'";
+    query = "THANHTOAN '" + MaHD_Local + "', N'" + req.body.HINHTHUCTT + "'," + "N'" + req.body.HOTENNGUOINHAN + "'" + ",'" + req.body.SDTNGNHAN + "'," + "N'" + req.body.DIACHI + "'"  + "," + "'" + req.body.EMAIL + "'" + ',' + "'" + req.body.THOIGIANGIAO + "'" + ',' + "N'" + req.body.LOINHAN + "'";
   } else {
-    query = "THANHTOAN " + MaHD_Local + ',' + req.body.HINHTHUCTT + ',' + "''" + ',' + "''" + ',' + "''" + ',' +  "''" + ',' + "'" + req.body.THOIGIANGIAO + "'" + ',' + "'" + req.body.LOINHAN + "'";
+    query = "THANHTOAN '" + MaHD_Local + "', N'" + req.body.HINHTHUCTT + "'," + "''" + ',' + "''" + ',' + "''" + ',' +  "''" + ',' + "'" + req.body.THOIGIANGIAO + "'" + ',' + "N'" + req.body.LOINHAN + "'";
   }
+  // console.log(query);
   request.query(query, function(err, recordset) {
     if (err) console.log(err);
     // send records as a response
