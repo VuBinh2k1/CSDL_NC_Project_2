@@ -17,8 +17,8 @@ let MaHD_Local = 0;
 
 // config for your database
 const config = {
-  user: 'phuoctran',
-  password: '123456789',
+  user: 'gruviamon',
+  password: '123',
   server: 'localhost',
   database: 'HOAYEUTHUONG',
   trustServerCertificate: true,
