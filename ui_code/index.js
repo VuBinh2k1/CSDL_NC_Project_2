@@ -17,7 +17,7 @@ let MaHD_Local = 0;
 
 // config for your database
 const config = {
-  user: 'gruviamon',
+  user: 'sa',
   password: '123',
   server: 'localhost',
   database: 'HOAYEUTHUONG',
@@ -242,7 +242,7 @@ app.get('/loadData3', (req, res) => {
 
 app.post('/themsanpham', (req, res) => {
   const request = new sql.Request();
-  let query = "THEMSP " + req.body.LOAI + ',' + "'" + req.body.TENSP + "'" + ',' + "'" + req.body.NGAYST + "'" + ',' + req.body.GIASP + ',' + req.body.GIAMGIA + ',' + req.body.TTINSP + ',' + "'" + req.body.TTSP + "'";
+  let query = "THEMSP '" + req.body.LOAI + "'," + "N'" + req.body.TENSP + "'" + ',' + "'" + req.body.NGAYST + "'" + ',' + req.body.GIASP + ',' + req.body.GIAMGIA + ",'" + req.body.TTINSP + "'," + "'" + req.body.TTSP + "'";
   if(req.body.ChuDe !== "") {
     query = query + ',' + req.body.ChuDe;
   }
@@ -258,9 +258,13 @@ app.post('/themsanpham', (req, res) => {
 
 app.post('/themchude', (req, res) => {
   const request = new sql.Request();
-  let query = "THEM_CHUDE " + req.body.MASP + ',' + req.body.ChuDe;
-  if(req.body.ChuDe_2 !== "") {
-    query = query + ',' + req.body.ChuDe_2;
+  let query = "THEM_CHUDE '" + req.body.MASP + "',N'" + req.body.ChuDe + "'";
+  if(req.body.ChuDe_2 != "") {
+    query = query + ",N'" + req.body.ChuDe_2 + "'";
+  }
+  else
+  {
+    query = query + ",''";
   }
   request.query(query, function(err, recordset) {
     if (err) console.log(err);
@@ -271,7 +275,7 @@ app.post('/themchude', (req, res) => {
 
 app.post('/hethang', (req, res) => {
   const request = new sql.Request();
-  let query = "XOA_SP " + req.body.MASP;
+  let query = "XOA_SP '" + req.body.MASP + "'";
   request.query(query, function(err, recordset) {
     if (err) console.log(err);
     res.locals.mess = true;
