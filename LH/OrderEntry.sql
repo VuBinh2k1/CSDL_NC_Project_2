@@ -88,8 +88,8 @@ CREATE TABLE [dbo].[Advertised_Item](
 	[ItemWeight] [float] NULL,
 	[ItemColor] [nvarchar](10) NULL,
 	[ItemPrice] [money] NOT NULL,
-	[LowestPrice] [money] NULL,
-	[LowestPriceSupplier] [money] NULL,
+	[LowestPrice] [money] NULL, -- Green
+	[LowestPriceSupplier] [money] NULL, -- Green
  CONSTRAINT [PK_Advertised_Item] PRIMARY KEY CLUSTERED 
 (
 	[ItemNumber] ASC
@@ -104,10 +104,10 @@ GO
 CREATE TABLE [dbo].[Credit_Card](
 	[CustomerCreditCardNumber] [int] NOT NULL,
 	[CustomerCreditCardName] [nvarchar](50) NULL,
-	[CustomerIdentifier] [int] NOT NULL,
-	[PreferredOption] [int] DEFAULT(1),
-	[TotalofUse] [int] DEFAULT(0),
-	[LastUse] [date] NULL,
+	[CustomerIdentifier] [int] NOT NULL, -- Green
+	[PreferredOption] [int] DEFAULT(1), -- Green
+	[TotalofUse] [int] DEFAULT(0), -- Green
+	[LastUse] [date] NULL, -- Blue
  CONSTRAINT [PK_Credit_Card] PRIMARY KEY CLUSTERED 
 (
 	[CustomerCreditCardNumber] ASC
@@ -128,7 +128,7 @@ CREATE TABLE [dbo].[Customer](
 	[CustomerState] [nvarchar](50) NULL,
 	[CustomerZipCode] [nvarchar](50) NULL,
 	[CustomerCreditRating] [nvarchar](50) NULL,
-	[CustPreferredCreditCard] [int] NULL,
+	[CustPreferredCreditCard] [int] NULL, -- Green
  CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
 (
 	[CustomerIdentifier] ASC
@@ -151,7 +151,7 @@ CREATE TABLE [dbo].[Order](
 	[ShippingZipCode] [nvarchar](50) NULL,
 	[CustomerCreditCardNumber] [int] NULL,
 	[ShippingDate] [date] NULL,
-	[OrderTotalCost] [money] NULL,
+	[OrderTotalCost] [money] NULL, -- Green
  CONSTRAINT [PK_Order] PRIMARY KEY CLUSTERED 
 (
 	[OrderNumber] ASC
