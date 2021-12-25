@@ -87,3 +87,28 @@ END
 GO
 ALTER TABLE [dbo].[Order] ENABLE TRIGGER [CreditCard_TheLastUse]
 GO
+
+--Trigger#6_1
+CREATE OR ALTER TRIGGER [Add_TotalQuantityOrdered]
+ON [dbo].[Ordered_Item]
+FOR INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @QuantityOrdered BIGINT
+	DECLARE @ItemNumber INT
+
+	SELECT @QuantityOrdered = QuantityOrdered, @ItemNumber = ItemNumber
+	FROM inserted i
+	print  @QuantityOrdered
+	print @ItemNumber
+	UPDATE Advertised_Item
+	SET TotalQuantityOrdered = TotalQuantityOrdered + @QuantityOrdered
+	WHERE ItemNumber = @ItemNumber
+
+END
+GO
+ALTER TABLE [dbo].[Ordered_Item] ENABLE TRIGGER [Add_TotalQuantityOrdered]
+GO
+
+
+

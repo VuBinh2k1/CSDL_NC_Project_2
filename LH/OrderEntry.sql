@@ -163,7 +163,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Ordered_ Item](
+CREATE TABLE [dbo].[Ordered_Item](
 	[ItemNumber] [int] NOT NULL,
 	[OrderNumber] [int] NOT NULL,
 	[QuantityOrdered] [int] NOT NULL,
@@ -249,3 +249,10 @@ USE [master]
 GO
 ALTER DATABASE [ORDER_ENTRY] SET  READ_WRITE 
 GO
+
+USE [ORDER_ENTRY]
+GO
+ALTER TABLE [Advertised_Item] ADD [TotalQuantityOrdered] BIGINT DEFAULT 0
+GO
+
+-- exec sp_rename 'dbo.Ordered_ Item', 'Ordered_Item'
