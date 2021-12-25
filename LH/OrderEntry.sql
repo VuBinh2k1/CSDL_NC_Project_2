@@ -158,7 +158,7 @@ CREATE TABLE [dbo].[Order](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Ordered_ Item]    Script Date: 24/12/2021 11:22:51 CH ******/
+/****** Object:  Table [dbo].[Ordered_Item]    Script Date: 24/12/2021 11:22:51 CH ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -225,15 +225,15 @@ REFERENCES [dbo].[Credit_Card] ([CustomerCreditCardNumber])
 GO
 ALTER TABLE [dbo].[Order] CHECK CONSTRAINT [FK_Order_Order]
 GO
-ALTER TABLE [dbo].[Ordered_ Item]  WITH CHECK ADD  CONSTRAINT [FK_Ordered_ Item_Advertised_Item] FOREIGN KEY([ItemNumber])
+ALTER TABLE [dbo].[Ordered_Item]  WITH CHECK ADD  CONSTRAINT [FK_Ordered_ Item_Advertised_Item] FOREIGN KEY([ItemNumber])
 REFERENCES [dbo].[Advertised_Item] ([ItemNumber])
 GO
-ALTER TABLE [dbo].[Ordered_ Item] CHECK CONSTRAINT [FK_Ordered_ Item_Advertised_Item]
+ALTER TABLE [dbo].[Ordered_Item] CHECK CONSTRAINT [FK_Ordered_ Item_Advertised_Item]
 GO
-ALTER TABLE [dbo].[Ordered_ Item]  WITH CHECK ADD  CONSTRAINT [FK_Ordered_ Item_Order] FOREIGN KEY([OrderNumber])
+ALTER TABLE [dbo].[Ordered_Item]  WITH CHECK ADD  CONSTRAINT [FK_Ordered_ Item_Order] FOREIGN KEY([OrderNumber])
 REFERENCES [dbo].[Order] ([OrderNumber])
 GO
-ALTER TABLE [dbo].[Ordered_ Item] CHECK CONSTRAINT [FK_Ordered_ Item_Order]
+ALTER TABLE [dbo].[Ordered_Item] CHECK CONSTRAINT [FK_Ordered_ Item_Order]
 GO
 ALTER TABLE [dbo].[Restock_Item]  WITH CHECK ADD  CONSTRAINT [FK_Restock_Item_Advertised_Item] FOREIGN KEY([ItemNumber])
 REFERENCES [dbo].[Advertised_Item] ([ItemNumber])
