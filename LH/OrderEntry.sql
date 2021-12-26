@@ -89,7 +89,7 @@ CREATE TABLE [dbo].[Advertised_Item](
 	[ItemColor] [nvarchar](10) NULL,
 	[ItemPrice] [money] NOT NULL,
 	[LowestPrice] [money] NULL, -- Green
-	[LowestPriceSupplier] [money] NULL, -- Green
+	[LowestPriceSupplier] [int] NULL, -- Green
  CONSTRAINT [PK_Advertised_Item] PRIMARY KEY CLUSTERED 
 (
 	[ItemNumber] ASC
