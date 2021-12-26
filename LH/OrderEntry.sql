@@ -256,3 +256,10 @@ ALTER TABLE [Advertised_Item] ADD [TotalQuantityOrdered] BIGINT DEFAULT 0
 GO
 
 -- exec sp_rename 'dbo.Ordered_ Item', 'Ordered_Item'
+--CONSTRAINT: ItemNumber, LowestPriceSupplier, LowestPrice must exists
+ALTER TABLE [dbo].[Restock_Item]
+ADD UNIQUE([ItemNumber], [SupplierID], [PurchasePrice]);
+
+ALTER TABLE [dbo].[Advertised_Item]
+ADD CONSTRAINT FK_AdvItem_LowestPrice FOREIGN KEY ([ItemNumber], [LowestPriceSupplier], [LowestPrice])
+REFERENCES [dbo].[Restock_Item]([ItemNumber], [SupplierID], [PurchasePrice])
