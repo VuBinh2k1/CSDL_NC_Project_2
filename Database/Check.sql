@@ -3,7 +3,7 @@ GO
 
 -----------------------------------------------------------------------------------------------------
 ALTER TABLE [dbo].[DS_PHANLOAI]
-ADD CONSTRAINT CHK_Loai CHECK (Loai IN ('SANPHAM', 'NGUYENLIEU', 'SP_MUA', 'BOHOA', 'GAUBONG', 'BANH', 'TRANGTRI'))
+ADD CONSTRAINT CHK_Loai CHECK (Loai IN ('SANPHAM', 'NGUYENLIEU', 'SP_Mua', 'BOHOA', 'GAUBONG', 'BANH', 'TRANGTRI'))
 GO
 -----------------------------------------------------------------------------------------------------
 ALTER TABLE [dbo].[SANPHAM]
