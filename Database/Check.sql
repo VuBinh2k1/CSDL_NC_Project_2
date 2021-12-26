@@ -47,7 +47,7 @@ ALTER TABLE [dbo].[VOUCHER]
 ADD CONSTRAINT CHK_VCH_GiaTri CHECK (GiaTri >= 0)
 GO
 ALTER TABLE [dbo].[VOUCHER]
-ADD CONSTRAINT CHK_VCH_SoLuongNL CHECK (SoLanSuDung >= 0)
+ADD CONSTRAINT CHK_VCH_SoLanSuDung CHECK (SoLanSuDung >= 0)
 GO
 -----------------------------------------------------------------------------------------------------
 ALTER TABLE [dbo].[HOADON]
@@ -58,6 +58,13 @@ ADD CONSTRAINT CHK_HD_TinhTrangHD CHECK (TinhTrangHD IN (N'Chưa xác nhận', N
 GO
 ALTER TABLE [dbo].[HOADON_VANCHUYEN]
 ADD CONSTRAINT CHK_HD_PhiVanChuyen CHECK (PhiVanChuyen >= 0)
+GO
+-----------------------------------------------------------------------------------------------------
+ALTER TABLE [dbo].[PHIEUMUA]
+ADD CONSTRAINT CHK_PM_TinhTrangGiao CHECK (TinhTrangGiao IN (N'Đã giao', N'Chưa giao'))
+GO
+ALTER TABLE [dbo].[PHIEUMUA]
+ADD CONSTRAINT CHK_PM_TongChiPhi CHECK (TongChiPhi >= 0)
 GO
 -----------------------------------------------------------------------------------------------------
 ALTER TABLE [dbo].[CT_HOADON]
