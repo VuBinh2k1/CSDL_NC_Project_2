@@ -75,7 +75,7 @@ BEGIN
 		WHERE CustomerCreditCardNumber = @CardNumber)
 	BEGIN
 		UPDATE Credit_Card
-		SET LastUse = @LastUse
+		SET LastUse = CASE WHEN LastUse IS NULL OR LastUse < @LastUse THEN @LastUse END
 		WHERE CustomerCreditCardNumber = @CardNumber
 	END
 	ELSE
