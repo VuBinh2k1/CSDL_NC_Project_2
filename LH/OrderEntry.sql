@@ -143,7 +143,7 @@ GO
 CREATE TABLE [dbo].[Order](
 	[OrderNumber] [int] NOT NULL,
 	[CustomerTelephoneNumber] [char](10) NULL,
-	[CustomerIdentifer] [int] NOT NULL,
+	[CustomerIdentifier] [int] NOT NULL,
 	[OrderDate] [date] NULL,
 	[ShippingStreetAddress] [nvarchar](50) NULL,
 	[ShippingCity] [nvarchar](50) NULL,
@@ -215,7 +215,7 @@ REFERENCES [dbo].[Customer] ([CustomerIdentifier])
 GO
 ALTER TABLE [dbo].[Credit_Card] CHECK CONSTRAINT [FK_Credit_Card_Customer]
 GO
-ALTER TABLE [dbo].[Order]  WITH CHECK ADD  CONSTRAINT [FK_Order_Customer] FOREIGN KEY([CustomerIdentifer])
+ALTER TABLE [dbo].[Order]  WITH CHECK ADD  CONSTRAINT [FK_Order_Customer] FOREIGN KEY([CustomerIdentifier])
 REFERENCES [dbo].[Customer] ([CustomerIdentifier])
 GO
 ALTER TABLE [dbo].[Order] CHECK CONSTRAINT [FK_Order_Customer]
@@ -263,3 +263,4 @@ ADD UNIQUE([ItemNumber], [SupplierID], [PurchasePrice]);
 ALTER TABLE [dbo].[Advertised_Item]
 ADD CONSTRAINT FK_AdvItem_LowestPrice FOREIGN KEY ([ItemNumber], [LowestPriceSupplier], [LowestPrice])
 REFERENCES [dbo].[Restock_Item]([ItemNumber], [SupplierID], [PurchasePrice])
+
