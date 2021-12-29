@@ -35,7 +35,7 @@ FOR INSERT, UPDATE
 AS
 BEGIN
 	DECLARE @CustomerID INT, @CardNumber INT
-	SELECT @CustomerID = CustomerIdentifer, @CardNumber = CustomerCreditCardNumber
+	SELECT @CustomerID = CustomerIdentifier, @CardNumber = CustomerCreditCardNumber
 	FROM inserted i
 
 	IF @CardNumber IS NULL RETURN
@@ -65,7 +65,7 @@ FOR INSERT, UPDATE
 AS
 BEGIN
 	DECLARE @CustomerID INT, @CardNumber INT, @LastUse DATE
-	SELECT @CustomerID = CustomerIdentifer, @CardNumber = CustomerCreditCardNumber, @LastUse = OrderDate
+	SELECT @CustomerID = CustomerIdentifier, @CardNumber = CustomerCreditCardNumber, @LastUse = OrderDate
 	FROM inserted i
 
 	IF @CardNumber IS NULL OR @LastUse IS NULL RETURN
@@ -88,8 +88,8 @@ GO
 ALTER TABLE [dbo].[Order] ENABLE TRIGGER [CreditCard_TheLastUse]
 GO
 
---Trigger#6_1
-CREATE OR ALTER TRIGGER [Add_TotalQuantityOrdered]
+--Trigger#6
+CREATE OR ALTER TRIGGER [AdvertisedItem_TotalQuantityOrdered]
 ON [dbo].[Ordered_Item]
 FOR INSERT, UPDATE
 AS
@@ -99,16 +99,84 @@ BEGIN
 
 	SELECT @QuantityOrdered = QuantityOrdered, @ItemNumber = ItemNumber
 	FROM inserted i
-	print  @QuantityOrdered
-	print @ItemNumber
+
 	UPDATE Advertised_Item
-	SET TotalQuantityOrdered = TotalQuantityOrdered + @QuantityOrdered
+	SET TotalQuantityOrdered = CASE 
+								WHEN TotalQuantityOrdered IS NULL THEN (SELECT SUM (QuantityOrdered)
+																		FROM Ordered_Item
+																		WHERE ItemNumber = @ItemNumber)
+								ELSE TotalQuantityOrdered + @QuantityOrdered
+							END
 	WHERE ItemNumber = @ItemNumber
 
 END
 GO
-ALTER TABLE [dbo].[Ordered_Item] ENABLE TRIGGER [Add_TotalQuantityOrdered]
+ALTER TABLE [dbo].[Ordered_Item] ENABLE TRIGGER [AdvertisedItem_TotalQuantityOrdered]
 GO
 
+--Trigger#1
+CREATE OR ALTER TRIGGER [Order_OrderTotalCost]
+ON [dbo].[Ordered_Item]
+FOR INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @OrderNumber INT
 
+	SELECT @OrderNumber = OrderNumber
+	FROM inserted i
 
+	UPDATE [dbo].[Order]
+	SET OrderTotalCost = (SELECT SUM (SellingPrice)
+						  FROM Ordered_Item
+						  WHERE OrderNumber = @OrderNumber)
+	WHERE OrderNumber = @OrderNumber
+END
+GO
+ALTER TABLE [dbo].[Ordered_Item] ENABLE TRIGGER [Order_OrderTotalCost]
+GO
+
+--Trigger#2
+CREATE OR ALTER TRIGGER [AdvertisedItem_LowestPrice]
+ON [Restock_Item]
+FOR INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @Supplier INT
+	DECLARE @ItemNumber INT
+	DECLARE @Price MONEY
+
+	SELECT @Supplier = SupplierID, @ItemNumber = ItemNumber, @Price = PurchasePrice
+	FROM inserted i
+
+	UPDATE Advertised_Item
+	SET LowestPrice = R.PurchasePrice, LowestPriceSupplier = R.SupplierID
+	FROM Restock_Item R
+	WHERE R.ItemNumber = @ItemNumber AND NOT EXISTS (SELECT *
+													 FROM Restock_Item R1
+													 WHERE R1.ItemNumber = R.ItemNumber AND
+														   R1.PurchasePrice < R.PurchasePrice)
+END
+GO
+ALTER TABLE [dbo].[Restock_Item] ENABLE TRIGGER [AdvertisedItem_LowestPrice]
+GO
+
+--Trigger#3
+CREATE OR ALTER TRIGGER [CreditCard_CustomerIdentifier]
+ON [Order]
+FOR INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @CusId INT
+	DECLARE @CreditCard INT
+
+	SELECT @CusId = CustomerIdentifier, @CreditCard = CustomerCreditCardNumber
+	FROM inserted i
+
+	UPDATE Credit_Card
+	SET CustomerIdentifier = @CusId
+	WHERE CustomerCreditCardNumber = @CreditCard
+
+END
+GO
+ALTER TABLE [dbo].[Order] ENABLE TRIGGER [CreditCard_CustomerIdentifier]
+GO
