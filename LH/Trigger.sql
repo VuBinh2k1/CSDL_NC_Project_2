@@ -114,47 +114,31 @@ GO
 ALTER TABLE [dbo].[Ordered_Item] ENABLE TRIGGER [AdvertisedItem_TotalQuantityOrdered]
 GO
 
---Trigger#1
-CREATE OR ALTER TRIGGER [Order_OrderTotalCost]
-ON [dbo].[Ordered_Item]
-FOR INSERT, UPDATE
-AS
-BEGIN
-	DECLARE @OrderNumber INT
-
-	SELECT @OrderNumber = OrderNumber
-	FROM inserted i
-
-	UPDATE [dbo].[Order]
-	SET OrderTotalCost = (SELECT SUM (SellingPrice)
-						  FROM Ordered_Item
-						  WHERE OrderNumber = @OrderNumber)
-	WHERE OrderNumber = @OrderNumber
-END
-GO
-ALTER TABLE [dbo].[Ordered_Item] ENABLE TRIGGER [Order_OrderTotalCost]
-GO
-
 --Trigger#2
 CREATE OR ALTER TRIGGER [AdvertisedItem_LowestPrice]
 ON [Restock_Item]
 FOR INSERT, UPDATE
 AS
 BEGIN
+	DECLARE @Supplier_in INT
+	DECLARE @ItemNumber_in INT
+	DECLARE @Price_in MONEY
+
 	DECLARE @Supplier INT
-	DECLARE @ItemNumber INT
 	DECLARE @Price MONEY
 
-	SELECT @Supplier = SupplierID, @ItemNumber = ItemNumber, @Price = PurchasePrice
+	SELECT @Supplier_in = SupplierID, @ItemNumber_in = ItemNumber, @Price_in = PurchasePrice
 	FROM inserted i
 
-	UPDATE Advertised_Item
-	SET LowestPrice = R.PurchasePrice, LowestPriceSupplier = R.SupplierID
-	FROM Restock_Item R
-	WHERE R.ItemNumber = @ItemNumber AND NOT EXISTS (SELECT *
-													 FROM Restock_Item R1
-													 WHERE R1.ItemNumber = R.ItemNumber AND
-														   R1.PurchasePrice < R.PurchasePrice)
+	SELECT @Supplier = LowestPriceSupplier, @Price = LowestPrice
+	FROM Advertised_Item A
+	WHERE ItemNumber = @ItemNumber_in
+
+	IF @Price IS NULL OR @Price_in < @Price 
+		UPDATE Advertised_Item
+		SET LowestPrice = @Price_in, LowestPriceSupplier = @Supplier_in
+		WHERE ItemNumber = @ItemNumber_in
+
 END
 GO
 ALTER TABLE [dbo].[Restock_Item] ENABLE TRIGGER [AdvertisedItem_LowestPrice]
@@ -179,4 +163,39 @@ BEGIN
 END
 GO
 ALTER TABLE [dbo].[Order] ENABLE TRIGGER [CreditCard_CustomerIdentifier]
+GO
+
+USE [ORDER_ENTRY]
+GO
+
+--Trigger#1
+
+CREATE OR ALTER TRIGGER Price_OrderedItem
+ON [dbo].[Ordered_Item]
+FOR INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @Price MONEY
+	SET @Price = (SELECT ItemPrice FROM Advertised_Item AI, inserted I WHERE I.ItemNumber = AI.ItemNumber)
+
+	UPDATE Ordered_Item
+	SET SellingPrice = I.QuantityOrdered * @Price
+	FROM inserted I, Ordered_Item OI
+	WHERE OI.OrderNumber = I.OrderNumber AND OI.ItemNumber = I.ItemNumber
+END
+GO
+
+CREATE OR ALTER TRIGGER TotalCost_Order
+ON [dbo].[Ordered_Item]
+FOR INSERT, UPDATE
+AS
+BEGIN
+	DECLARE @Total MONEY
+	SET @Total = (SELECT SUM(OI.SellingPrice) FROM Ordered_Item OI, inserted I WHERE I.OrderNumber = OI.OrderNumber GROUP BY OI.OrderNumber)
+	
+	UPDATE [dbo].[Order]
+	SET OrderTotalCost = @Total
+	FROM inserted I, [dbo].[Order] O
+	WHERE I.OrderNumber = O.OrderNumber 
+END
 GO
