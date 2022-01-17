@@ -165,7 +165,7 @@ GO
 ALTER TABLE [dbo].[Order] ENABLE TRIGGER [CreditCard_CustomerIdentifier]
 GO
 
-USE [ORDER_ENTRY]
+USE [ORDER_ENTRY]O
 GO
 
 --Trigger#1

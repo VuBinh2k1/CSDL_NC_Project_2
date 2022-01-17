@@ -264,3 +264,6 @@ ALTER TABLE [dbo].[Advertised_Item]
 ADD CONSTRAINT FK_AdvItem_LowestPrice FOREIGN KEY ([ItemNumber], [LowestPriceSupplier], [LowestPrice])
 REFERENCES [dbo].[Restock_Item]([ItemNumber], [SupplierID], [PurchasePrice])
 
+ALTER TABLE [dbo].[Customer]
+ADD CONSTRAINT FK_Customer_PreferCreditCard FOREIGN KEY ([CustPreferredCreditCard])
+REFERENCES [dbo].[Credit_Card]([CustomerCreditCardNumber])

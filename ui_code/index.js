@@ -17,8 +17,8 @@ let MaHD_Local = 0;
 
 // config for your database
 const config = {
-  user: 'sa',
-  password: '123',
+  user: 'gruviamon',
+  password: '2101',
   server: 'localhost',
   database: 'HOAYEUTHUONG',
   trustServerCertificate: true,
@@ -288,6 +288,7 @@ app.post('/addToCart', (req, res) => {
   let query = "THEMVAOGIOHANG " + '6' + ',' + MaHD_Local + ',' + req.body.MaSP + ',' + req.body.SL;
   request.query(query, function(err, recordset) {
     if (err) console.log(err);
+    console.log(recordset);
     MaHD_Local = recordset.recordset[0].MaHD;
 
     res.redirect('/cart');
